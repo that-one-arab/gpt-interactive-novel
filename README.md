@@ -30,6 +30,11 @@ A customizable interactive fiction novel that utilizes GPT. Playable straight fr
 - Run `python index.py`
 
 ---
+
+## Limitations
+**Some game features do not work well with `gpt-3.5`, due to that it is recommended to use `gpt-4` to play the game.**
+
+---
 ## Buy me a coffee
 
 Do you think I deserved a coffee break? buy me one!

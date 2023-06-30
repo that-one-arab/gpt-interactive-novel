@@ -12,11 +12,12 @@ from lib.gpt import get_gpt_chat_response, get_gpt_response
 from lib.print import narrator_print, player_print, game_end_print
 from lib.game import get_narration_mechanism, get_side_characters, get_story_setting, get_story_theme, get_story_rounds, get_side_characters_w_occurrence, get_round_side_characters
 
+GPT_MODEL = os.environ['GPT_MODEL']
+
 def clear_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 spinner = Halo(spinner='dots')
-
 
 theme = get_story_theme()
 clear_terminal()
@@ -38,7 +39,7 @@ if (len(side_characters)):
 
 print('\n')
 spinner.start('Creating your story...')
-story_setting_gpt_response = get_gpt_response(prompt=prepare_define_story_prompt(theme, setting), temperature=1.2)
+story_setting_gpt_response = get_gpt_response(prompt=prepare_define_story_prompt(theme, setting), model=GPT_MODEL, temperature=1.2)
 
 story_setting = json.loads(story_setting_gpt_response)
 
@@ -55,8 +56,12 @@ while True:
     # Decrease remaining rounds by 1 on every player prompt
     story_rounds -= 1
 
+    # End game condition check
+    if story_rounds < 1:
+        break
+
     narrator_print('Narrator: \n')
-    response = get_gpt_chat_response(messages, print_stream=True, print_func=narrator_print, temperature=0.2)
+    response = get_gpt_chat_response(messages, model=GPT_MODEL, print_stream=True, print_func=narrator_print, temperature=0.2)
     messages.append({"role": "assistant", "content": response})
 
     player_print('\nPlayer: \n')
@@ -74,10 +79,6 @@ while True:
         player_input+= ". END" # Finalize the game, resulting in ending it.
     
     messages.append({"role": "user", "content": player_input})
-
-    # End game condition check
-    if story_rounds < 1:
-        break
 
 game_end_print("\n\nTHE END")
 game_end_print("\n\n\nThank you for playing!")

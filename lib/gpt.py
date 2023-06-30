@@ -1,6 +1,6 @@
 import openai
 
-def get_gpt_response(prompt, print_stream = False, print_func=None, model='gpt-4', temperature = 0):
+def get_gpt_response(prompt, print_stream = False, print_func=None, model='gpt-3.5-turbo', temperature = 0):
     def _print_func(x):
         print_func(x) if print_func else print(x, end='')
 
@@ -21,7 +21,7 @@ def get_gpt_response(prompt, print_stream = False, print_func=None, model='gpt-4
 
     return response.choices[0].message.content
 
-def get_gpt_chat_response(messages, print_stream = False, print_func=None, model='gpt-4', temperature = 0):
+def get_gpt_chat_response(messages, print_stream = False, print_func=None, model='gpt-3.5-turbo', temperature = 0):
     def _print_func(x):
         print_func(x) if print_func else print(x, end='')
 
