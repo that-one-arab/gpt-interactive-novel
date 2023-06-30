@@ -5,13 +5,17 @@ A customizable interactive fiction novel that utilizes GPT. Playable straight fr
 
 ![Chat Preview](./public/game.gif)
 
-
 ## Features
 - Experience an interactive fiction novel with a clear beginning and end goal.
 - Choose your own story setting and theme.
 - Insert as many characters as you want to the story.
 - Choose your story length
 - Choose between choice based novels or free text novels
+
+---
+
+## Game demo video:
+https://github.com/that-one-arab/gpt-interactive-novel/assets/91668821/49c9111e-e902-4c8e-96f9-414fb04aaf62
 
 ---
 
