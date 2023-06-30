@@ -24,6 +24,7 @@ Generate an interactive fiction for the below story setting:
 
 My rules are:
 - Prompt me for a response {"from a list of choices" if with_choices else ''}
+{"- Do not ask me to 'choose a number to continue the story' since that is already inferred by the context" if with_choices else ''}
 - If I append the word "DRAW" to my response, draw me closer to the story setting's end goal
 - If I append the word "END" to my response, finalize the story according to the setting's end goal
 - If I append the word "ADD CHARACTER" to my response, add the character to the story while considering my description of the character.
