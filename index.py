@@ -56,13 +56,14 @@ while True:
     # Decrease remaining rounds by 1 on every player prompt
     story_rounds -= 1
 
-    # End game condition check
-    if story_rounds < 1:
-        break
 
     narrator_print('Narrator: \n')
     response = get_gpt_chat_response(messages, model=GPT_MODEL, print_stream=True, print_func=narrator_print, temperature=0.2)
     messages.append({"role": "assistant", "content": response})
+
+    # End game condition check
+    if story_rounds < 1:
+        break
 
     player_print('\nPlayer: \n')
     player_input = input()
